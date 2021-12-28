@@ -1,0 +1,35 @@
+STP課題
+
+問1
+
+ブリッジIDが一番小さいのでルートブリッジはswitch3です。
+
+問2
+
+各ポートの役割
+
+switch1
+F0/1 DP switch2のF0/1のルートポートの対向のため
+F0/2 RP 最小ルートパスコストのためswitch1→switch3：100
+                                  switch1→switch4→switch3：100＋100＋19→219
+
+　　　　また、対向ポートがDPのため
+
+
+switch2
+F0/1 RP　対向ポートのswitch1がDPのため　また、最小ルートパスコストのためswitch2→switch1→switch3：19＋100→119
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　switch2→switch4→switch3：100＋100→200
+F0/2 BP　あまりのため
+
+
+switch3
+E0/1 DP
+E0/2 DP
+ルートブリッジのため、すべてのポートは指定ポートになるから
+
+
+switch4
+E0/1 DP　対向ポートが決まっていないがブリッジIDがswitch2より小さく、片方がRPのため、各コリジョンドメインごとに1つ指定ポートが存在することによりDP
+E0/2 RP　最小ルートパスコストのためswitch4→switch3:100
+                                   switch4→switch2→switch1→switch3：100＋19＋100→219
+　　　　また、対向ポートがDPのため 　
